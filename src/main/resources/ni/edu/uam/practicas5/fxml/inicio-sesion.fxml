@@ -27,8 +27,8 @@
    <PasswordField fx:id="pwdContrasena" />
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
       <children>
-         <Button fx:id="btnIngresar" mnemonicParsing="false" text="Ingresar" />
-         <Button fx:id="btnSalir" mnemonicParsing="false" text="Salir" />
+         <Button fx:id="btnIngresar" mnemonicParsing="false" onAction="#iniciarSesion" text="Ingresar" />
+         <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
       </children>
    </HBox>
 </VBox>
