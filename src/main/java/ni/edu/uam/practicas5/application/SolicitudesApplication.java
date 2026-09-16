@@ -12,7 +12,7 @@ public class SolicitudesApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SolicitudesApplication.class.getResource("/ni/edu/uam/practicas5/fxml/inicio-sesion.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 420, 340);
-        stage.setTitle("Sistema de Solicitudes - Inicio de Sesion");
+        stage.setTitle("Client Manager - Inicio de Sesion");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
