@@ -14,23 +14,28 @@ import java.io.IOException;
 public class MenuPrincipalController {
 
     @FXML
-    private void abrirLogin(){
+    private void abrirConsulta(){
         try {
             SceneManager.abrirVentana(
-                    "/ni/edu/uam/practicas5/fxml/iniciar-sesion.fxml",
-                    "Client Manager - Inicio de Sesion");
+                    "/ni/edu/uam/practicas5/fxml/consulta-clientes.fxml",
+                    "Client Manager - Consulta de Clientes");
         }catch (IOException e){
-            new Alert(Alert.AlertType.ERROR,"Error al abrir el login").showAndWait();
+            AlertsUtils.showError("Error", "No fue posible Consultar la lista de clientes");
 
         }
-    }
-    @FXML
-    private void abrirConsulta(){
 
     }
 
     @FXML
     private void abrirRegistro(){
+        try {
+            SceneManager.abrirVentana(
+                    "/ni/edu/uam/practicas5/fxml/registro-clientes.fxml",
+                    "Client Manager - Registro de Clientes");
+        }catch (IOException e){
+            AlertsUtils.showError("Error", "No fue posible abrir el registro de clientes");
+
+        }
 
     }
 
