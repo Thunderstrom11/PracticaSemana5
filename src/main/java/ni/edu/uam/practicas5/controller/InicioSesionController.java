@@ -17,8 +17,8 @@ public class InicioSesionController {
     @FXML
     private PasswordField pwdContrasena;
 
-    private String USUARIO_VALIDO = "admin";
-    private String CLAVE_VALIDA = "1234";
+    private static final String USUARIO_VALIDO = "admin";
+    private static final String CLAVE_VALIDA = "1234";
 
     @FXML
     private void initialize() { // enter para ir al siguiente campo
@@ -42,7 +42,7 @@ public class InicioSesionController {
 
         //not
         if (!usuario.equals(USUARIO_VALIDO) || !clave.equals(CLAVE_VALIDA)) {
-            AlertsUtils.showInfo("Acceso denegado", "Usuario o contrasena incorrectos");
+            AlertsUtils.showError("Acceso denegado", "Usuario o contrasena incorrectos");
             pwdContrasena.clear();
             pwdContrasena.requestFocus();
             return;
@@ -60,8 +60,6 @@ public class InicioSesionController {
 
     @FXML
     private void salir() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Desea salir del programa?", ButtonType.OK, ButtonType.CANCEL);
-
         if (AlertsUtils.showConfirmation("Confirmar salida", "Desea salir del programa?")) {
             Platform.exit();
         }
