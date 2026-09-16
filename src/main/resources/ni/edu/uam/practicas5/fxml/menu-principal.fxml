@@ -35,7 +35,7 @@
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../practicas5/iconos/Salir.png" />
+                                <Image url="@../iconos/Salir.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -44,7 +44,7 @@
                       <graphic>
                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                  <Image url="@../practicas5/iconos/AñadirCliente.png" />
+                                  <Image url="@../iconos/AñadirCliente.png" />
                               </image>
                           </ImageView>
                       </graphic>
@@ -53,7 +53,7 @@
                       <graphic>
                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                  <Image url="@../practicas5/iconos/ConsultarClientes.png" />
+                                  <Image url="@../iconos/ConsultarClientes.png" />
                               </image>
                           </ImageView>
                       </graphic>
@@ -84,7 +84,7 @@
                   </Label>
                   <ImageView fitHeight="62.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                       <image>
-                          <Image url="@../practicas5/iconos/Cliente.png" />
+                          <Image url="@../iconos/Cliente.png" />
                       </image>
                   </ImageView>
                </children>
