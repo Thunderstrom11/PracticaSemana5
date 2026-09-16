@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="333.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.MenuPrincipalController">
+   <top>
+      <VBox prefHeight="64.0" prefWidth="474.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Archivos">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Editar">
+                  <items>
+                    <MenuItem fx:id="abrirRegistro" mnemonicParsing="false" text="Registro" />
+                        <MenuItem fx:id="abrirConsulta" mnemonicParsing="false" text="Consulta" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ayuda">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#mostrarInformacionProyecto" text="Acerca de" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+              <items>
+                <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#salir" prefHeight="32.0" prefWidth="32.0" />
+                  <Button fx:id="btnRegistro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirRegistro" prefHeight="32.0" prefWidth="32.0" />
+                  <Button fx:id="btnConsulta" layoutX="46.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirConsulta" prefHeight="32.0" prefWidth="32.0" />
+              </items>
+            </ToolBar>
+         </children></VBox>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.0" minWidth="10.0" prefWidth="87.00000762939453" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.99999237060547" minWidth="10.0" prefWidth="228.99999237060547" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="94.4" minHeight="10.0" prefHeight="81.4" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="112.4" minHeight="10.0" prefHeight="83.79999999999998" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="87.39999999999998" minHeight="10.0" prefHeight="87.39999999999998" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Client Manager">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="80.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
