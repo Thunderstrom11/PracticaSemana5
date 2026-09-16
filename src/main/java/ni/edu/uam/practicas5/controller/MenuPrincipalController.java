@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import ni.edu.uam.practicas5.util.AlertsUtils;
 import ni.edu.uam.practicas5.util.SceneManager;
 
 
@@ -35,11 +36,7 @@ public class MenuPrincipalController {
 
     @FXML
     private void mostrarInformacionProyecto(ActionEvent event){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Acerca de");
-        alert.setHeaderText(null);
-        alert.setContentText("Sistema de Registro y consulta de solicitudes de sus clientes \n - Programa desarrollado por Diego Chamendy y José Salgado " );
-        alert.showAndWait();
+        AlertsUtils.showInfo("Acerca de", "Sistema de Registro y consulta de solicitudes de sus clientes \n - Programa desarrollado por Diego Chamendy y José Salgado");
     }
 
 
