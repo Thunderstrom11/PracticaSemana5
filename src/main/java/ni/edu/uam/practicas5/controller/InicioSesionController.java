@@ -21,7 +21,7 @@ public class InicioSesionController {
     private String CLAVE_VALIDA = "1234";
 
     @FXML
-    private void initialize() {
+    private void initialize() { // enter para ir al siguiente campo
         txtUsuario.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 pwdContrasena.requestFocus();
@@ -51,7 +51,8 @@ public class InicioSesionController {
 
         try {
             Stage stage = (Stage) txtUsuario.getScene().getWindow(); //cualquier elemento toma el window
-            SceneManager.cambiarVentana("/ni/edu/uam/practicas5/fxml/menu-principal.fxml", "Client Manager - Menu Principal", stage);
+            stage.close();
+            SceneManager.abrirVentana("/ni/edu/uam/practicas5/fxml/menu-principal.fxml", "Client Manager - Menu Principal");
         } catch (IOException e) { //errores de lectura del fxml
             AlertsUtils.showError("Error", "No fue posible abrir el menu principal");
         }
@@ -60,8 +61,6 @@ public class InicioSesionController {
     @FXML
     private void salir() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Desea salir del programa?", ButtonType.OK, ButtonType.CANCEL);
-        alert.setTitle("Confirmar salida");
-        alert.setHeaderText(null);
 
         if (AlertsUtils.showConfirmation("Confirmar salida", "Desea salir del programa?")) {
             Platform.exit();
