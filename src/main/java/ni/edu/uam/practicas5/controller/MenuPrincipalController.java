@@ -17,8 +17,8 @@ public class MenuPrincipalController {
     private void abrirLogin(){
         try {
             SceneManager.abrirVentana(
-                    "/ni/edu/uam/practicas5/view/Login.fxml",
-                    "Login");
+                    "/ni/edu/uam/practicas5/fxml/iniciar-sesion.fxml",
+                    "Client Manager - Inicio de Sesion");
         }catch (IOException e){
             new Alert(Alert.AlertType.ERROR,"Error al abrir el login").showAndWait();
 
