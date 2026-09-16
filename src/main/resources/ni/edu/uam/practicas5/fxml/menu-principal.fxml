@@ -18,8 +18,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Editar">
                   <items>
-                    <MenuItem fx:id="abrirRegistro" mnemonicParsing="false" text="Registro" />
-                        <MenuItem fx:id="abrirConsulta" mnemonicParsing="false" text="Consulta" />
+                    <MenuItem onAction="#abrirRegistro" mnemonicParsing="false" text="Registro" />
+                        <MenuItem onAction="#abrirConsulta" mnemonicParsing="false" text="Consulta" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Ayuda">
