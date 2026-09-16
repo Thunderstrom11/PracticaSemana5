@@ -31,9 +31,33 @@
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#salir" prefHeight="32.0" prefWidth="32.0" />
-                  <Button fx:id="btnRegistro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirRegistro" prefHeight="32.0" prefWidth="32.0" />
-                  <Button fx:id="btnConsulta" layoutX="46.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirConsulta" prefHeight="32.0" prefWidth="32.0" />
+                <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#salir" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../practicas5/iconos/Salir.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                  <Button fx:id="btnRegistro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirRegistro" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;">
+                      <graphic>
+                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../practicas5/iconos/AñadirCliente.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+                  <Button fx:id="btnConsulta" layoutX="46.0" layoutY="10.0" mnemonicParsing="false" onAction="#abrirConsulta" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;">
+                      <graphic>
+                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../practicas5/iconos/ConsultarClientes.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
               </items>
             </ToolBar>
          </children></VBox>
@@ -55,10 +79,14 @@
                <children>
                   <Label text="Client Manager">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="80.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="62.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../practicas5/iconos/Cliente.png" />
+                      </image>
+                  </ImageView>
                </children>
             </HBox>
          </children>
