@@ -31,7 +31,6 @@ public class ConsultaClientesController {
     @FXML private TableColumn<Cliente, String> colFoto;
     @FXML private TableColumn<Cliente, String> colCarpeta;
 
-    // vista en vivo sobre la lista estatica: lo que se registra aparece aqui
     private final ObservableList<Cliente> clientes = FXCollections.observableList(Cliente.registrados);
 
     @FXML
@@ -42,10 +41,9 @@ public class ConsultaClientesController {
         colFechaNac.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
         colTipoSolicitud.setCellValueFactory(new PropertyValueFactory<>("tipoSolicitud"));
         colCarpeta.setCellValueFactory(new PropertyValueFactory<>("rutaCarpeta"));
-        // la columna Foto muestra la imagen real, no la ruta
         colFoto.setCellValueFactory(data ->
                 new SimpleObjectProperty<>(data.getValue().getRutaFotografia()));
-        colFoto.setCellFactory(col -> new TableCell<>() {
+        colFoto.setCellFactory(_ -> new TableCell<>() {
             private final ImageView view = new ImageView();
             @Override
             protected void updateItem(String ruta, boolean empty) {
@@ -61,14 +59,12 @@ public class ConsultaClientesController {
                 }
             }
         });
-        // altura fija de fila para que las fotos de 40px no se recorten
         tbvClientes.setFixedCellSize(50);
         tbvClientes.setItems(clientes);
-        // click izquierdo sobre una fila: abre el registro en modo edicion (como en Fact_App)
+        // click izquierdo sobre una fila:
         tbvClientes.setOnMouseClicked(this::manejarClickTabla);
     }
 
-    // un solo click izquierdo con fila seleccionada abre la edicion
     private void manejarClickTabla(MouseEvent event) {
         if (event.getButton() != MouseButton.PRIMARY) return;
         Cliente cliente = tbvClientes.getSelectionModel().getSelectedItem();
@@ -82,7 +78,6 @@ public class ConsultaClientesController {
         } catch (IOException e) {
             AlertsUtils.showError("Error", "No fue posible abrir el registro de clientes");
         }
-        // al cerrar la ventana modal refresca la tabla por si edito o borro
         tbvClientes.refresh();
     }
 
