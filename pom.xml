@@ -75,6 +75,10 @@
                         <configuration>
                             <mainClass>ni.edu.uam.practicas5/ni.edu.uam.practicas5.application.SolicitudesApplication</mainClass>
                             <launcher>app</launcher>
+                            <options>
+                                <option>--enable-native-access=javafx.graphics</option>
+                                <option>--sun-misc-unsafe-memory-access=allow</option>
+                            </options>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
                             <noManPages>true</noManPages>
