@@ -5,13 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ni.edu.uam.practicas5.model.Cliente;
 import ni.edu.uam.practicas5.util.AlertsUtils;
@@ -61,15 +61,21 @@ public class ConsultaClientesController {
         });
         tbvClientes.setFixedCellSize(50);
         tbvClientes.setItems(clientes);
-        // click izquierdo sobre una fila:
-        tbvClientes.setOnMouseClicked(this::manejarClickTabla);
+        tbvClientes.setRowFactory(tabla -> {
+            TableRow<Cliente> fila = new TableRow<>();
+            fila.setOnMouseClicked(evento -> {
+                if (fila.isEmpty()) return;
+                if (evento.getButton() == MouseButton.PRIMARY) {
+                    abrirEdicion(fila.getItem());
+                } else if (evento.getButton() == MouseButton.SECONDARY) {
+                    tbvClientes.getSelectionModel().select(fila.getItem());
+                }
+            });
+            return fila;
+        });
     }
 
-    private void manejarClickTabla(MouseEvent event) {
-        if (event.getButton() != MouseButton.PRIMARY) return;
-        Cliente cliente = tbvClientes.getSelectionModel().getSelectedItem();
-        if (cliente == null) return;
-
+    private void abrirEdicion(Cliente cliente) {
         Cliente.seleccionado = cliente;
         try {
             SceneManager.abrirVentana(
@@ -79,6 +85,23 @@ public class ConsultaClientesController {
             AlertsUtils.showError("Error", "No fue posible abrir el registro de clientes");
         }
         tbvClientes.refresh();
+    }
+
+    @FXML
+    private void verDetalle() {
+        Cliente cliente = tbvClientes.getSelectionModel().getSelectedItem();
+        if (cliente == null) {
+            AlertsUtils.showAlert("Sin seleccion", "Seleccione primero un cliente de la tabla.");
+            return;
+        }
+        Cliente.seleccionado = cliente;
+        try {
+            SceneManager.abrirVentana(
+                    "/ni/edu/uam/practicas5/fxml/detalle-cliente.fxml",
+                    "Client Manager - Detalle del Cliente");
+        } catch (IOException e) {
+            AlertsUtils.showError("Error", "No fue posible abrir el detalle del cliente");
+        }
     }
 
     @FXML
