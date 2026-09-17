@@ -1,8 +1,10 @@
 package ni.edu.uam.practicas5.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -40,7 +42,10 @@ public class RegistroClientesController {
     @FXML private CheckBox chxbSoporte;
     @FXML private ImageView imgCliente;
     @FXML private Label lblRuta;
+    @FXML private Button btnBorrar;
 
+    private boolean modoEdicion;
+    private Cliente clienteAEditar;
     private String rutaFotografia;
     private String rutaCarpetaSeleccionada;
 
@@ -55,10 +60,15 @@ public class RegistroClientesController {
                 setDisable(empty || fecha.isAfter(LocalDate.now()));
             }
         });
+
+        // diferido: initialize() corre antes de que la escena este adjunta a la ventana,
+        // y prepararModoEdicion necesita txtNombre.getScene()
+        Platform.runLater(this::prepararModoEdicion);
     }
 
     @FXML
     private void guardarCliente() {
+        if (modoEdicion) { guardarEdicion(); return; }
         if (!validarCampos()) return;
 
         if (confirmarRegistro()) {
@@ -215,8 +225,80 @@ public class RegistroClientesController {
         lblRuta.setText("");
     }
 
+    // modo edicion: la consulta deja el cliente en Cliente.seleccionado,
+    // se llenan los campos y se muestran los botones Editar/Borrar del toolbar
+    private void prepararModoEdicion() {
+        if (Cliente.seleccionado == null) return;
+        modoEdicion = true;
+        clienteAEditar = Cliente.seleccionado;
+        llenarCamposDesde(clienteAEditar);
+        btnBorrar.setVisible(true);
+        btnBorrar.setDisable(false);
+        Stage stage = (Stage) txtNombre.getScene().getWindow();
+        stage.setTitle("Client Manager - Editar Cliente");
+    }
+
+    private void llenarCamposDesde(Cliente cliente) {
+        txtNombre.setText(cliente.getNombres());
+        txtApellido.setText(cliente.getApellidos());
+        cmbTipoCliente.setValue(cliente.getTipoCliente());
+        if (cliente.getCiudad() != null) {
+            cmbCiudad.getEditor().setText(cliente.getCiudad());
+            cmbCiudad.setValue(cliente.getCiudad());
+        }
+        dtpFechaNacimiento.setValue(cliente.getFechaNacimiento());
+        if (cliente.getTipoSolicitud() != null) {
+            for (Toggle toggle : tipoCliente.getToggles()) {
+                RadioButton radio = (RadioButton) toggle;
+                if (radio.getText().equalsIgnoreCase(cliente.getTipoSolicitud())) {
+                    radio.setSelected(true);
+                }
+            }
+        }
+        String servicios = cliente.getServicios();
+        if (servicios != null) {
+            chxbRetiro.setSelected(servicios.contains("Plan de retiro"));
+            chxbSoporte.setSelected(servicios.contains("Soporte"));
+        }
+        rutaFotografia = cliente.getRutaFotografia();
+        if (rutaFotografia != null) imgCliente.setImage(new Image(rutaFotografia));
+        rutaCarpetaSeleccionada = cliente.getRutaCarpeta();
+        if (rutaCarpetaSeleccionada != null) lblRuta.setText(rutaCarpetaSeleccionada);
+    }
+
+    // aplica los cambios sobre el mismo objeto de la lista (no crea uno nuevo)
+    @FXML
+    private void guardarEdicion() {
+        if (!validarCampos()) return;
+        if (!confirmarRegistro()) return;
+        clienteAEditar.setNombres(txtNombre.getText().trim());
+        clienteAEditar.setApellidos(txtApellido.getText().trim());
+        clienteAEditar.setTipoCliente(cmbTipoCliente.getValue());
+        clienteAEditar.setCiudad(textoCiudad());
+        clienteAEditar.setFechaNacimiento(dtpFechaNacimiento.getValue());
+        clienteAEditar.setTipoSolicitud(textoTipoSolicitud());
+        clienteAEditar.setServicios(serviciosSeleccionados());
+        clienteAEditar.setRutaFotografia(rutaFotografia);
+        clienteAEditar.setRutaCarpeta(rutaCarpetaSeleccionada);
+        AlertsUtils.showInfo("Exito", "Cliente actualizado correctamente.");
+        salirRegistroClientes();
+    }
+
+    @FXML
+    private void borrarCliente() {
+        if (AlertsUtils.showConfirmation("Confirmar eliminacion",
+                "Desea eliminar el cliente '" + clienteAEditar.getNombreCompleto() + "'?")) {
+            Cliente.registrados.remove(clienteAEditar);
+            AlertsUtils.showInfo("Exito", "Cliente eliminado correctamente.");
+            salirRegistroClientes();
+        }
+    }
+
     @FXML
     private void salirRegistroClientes() {
+        Cliente.seleccionado = null;
+        modoEdicion = false;
+        clienteAEditar = null;
         Stage stage = (Stage) txtNombre.getScene().getWindow();
         stage.close();
     }

@@ -72,6 +72,18 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                 <Button fx:id="btnBorrar" disable="true" layoutX="118.0" layoutY="10.0" mnemonicParsing="false" onAction="#borrarCliente" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;" visible="false">
+                    <tooltip>
+                       <Tooltip text="Eliminar el cliente en edicion" />
+                    </tooltip>
+                    <graphic>
+                       <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                             <Image url="@../iconos/Borrar.png" />
+                          </image>
+                       </ImageView>
+                    </graphic>
+                 </Button>
               </items>
             </ToolBar>
          </children>
@@ -124,14 +136,12 @@
             <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="117.0" prefWidth="294.0" spacing="15.0" GridPane.columnIndex="1">
                <children>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="227.0" spacing="5.0">
-                     <children>
                         <Label text="Tipo de Cliente:">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
                         <ComboBox fx:id="cmbTipoCliente" prefWidth="150.0" />
-                     </children>
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

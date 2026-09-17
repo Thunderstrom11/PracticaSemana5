@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="383.0" prefWidth="1014.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.ConsultaClientesController">
+   <top>
+      <VBox alignment="CENTER" prefHeight="124.0" prefWidth="566.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Consulta de Clientes">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../iconos/ConsultarClientes.png" />
+                     </image>
+                  </ImageView>
+               </children></HBox>
+            <ToolBar prefHeight="40.0" prefWidth="362.0" style="-fx-background-color: lightgray;">
+              <items>
+                <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#salirConsultaCliente" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;">
+                   <graphic>
+                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                            <Image url="@../iconos/Salir.png" />
+                         </image>
+                      </ImageView>
+                   </graphic>
+                </Button>
+              </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="217.0" prefWidth="566.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tbvClientes" prefHeight="259.0" prefWidth="549.0">
+              <columns>
+                <TableColumn fx:id="colNombre" prefWidth="232.79999095201492" text="Nombre" />
+                <TableColumn fx:id="colTipo" prefWidth="116.00001525878906" text="Tipo" />
+                  <TableColumn fx:id="colCiudad" prefWidth="112.0" text="Ciudad" />
+                  <TableColumn fx:id="colFechaNac" prefWidth="85.60000610351562" text="Fech Nac" />
+                  <TableColumn fx:id="colTipoSolicitud" prefWidth="118.4000244140625" text="Tipo Solicitud" />
+                  <TableColumn fx:id="colFoto" prefWidth="120.5999755859375" text="Foto" />
+                  <TableColumn fx:id="colCarpeta" prefWidth="225.00006103515625" text="Carpeta" />
+              </columns>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
