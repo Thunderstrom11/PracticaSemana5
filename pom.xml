@@ -73,7 +73,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ni.edu.uam.practicas5/ni.edu.uam.practicas5.application.SolicitudesApplication</mainClass>
+                            <mainClass>ni.edu.uam.practicas5/ni.edu.uam.practicas5.application.ClientManagerApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SolicitudesApplication extends Application {
+public class ClientManagerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SolicitudesApplication.class.getResource("/ni/edu/uam/practicas5/fxml/inicio-sesion.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ClientManagerApplication.class.getResource("/ni/edu/uam/practicas5/fxml/inicio-sesion.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 420, 340);
         stage.setTitle("Client Manager - Inicio de Sesion");
         stage.setResizable(false);
