@@ -18,6 +18,7 @@ public class Cliente {
     private String tipoSolicitud;
     private String servicios;
     private String rutaFotografia;
+    private String rutaCarpeta;
 
     //paso de datos entre ventanas. registro agrega y la consulta lee.
     public static final List<Cliente> registrados = new ArrayList<>(); //lista de objetos cliente
