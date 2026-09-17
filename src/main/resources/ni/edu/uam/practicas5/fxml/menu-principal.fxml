@@ -18,8 +18,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Editar">
                   <items>
-                    <MenuItem onAction="#abrirRegistro" mnemonicParsing="false" text="Registro" />
-                        <MenuItem onAction="#abrirConsulta" mnemonicParsing="false" text="Consulta" />
+                    <MenuItem mnemonicParsing="false" onAction="#abrirRegistro" text="Registro" />
+                        <MenuItem mnemonicParsing="false" onAction="#abrirConsulta" text="Consulta" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Ayuda">
@@ -29,7 +29,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: lightgrey;">
               <items>
                 <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#cerrarApp" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: white;">
                     <graphic>
