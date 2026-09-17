@@ -3,8 +3,11 @@ package ni.edu.uam.practicas5.controller;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.input.ContextMenuEvent;
 import ni.edu.uam.practicas5.util.AlertsUtils;
 import ni.edu.uam.practicas5.util.SceneManager;
 
@@ -42,6 +45,12 @@ public class MenuPrincipalController {
     @FXML
     private void mostrarInformacionProyecto(ActionEvent event){
         AlertsUtils.showInfo("Acerca de", "Sistema de Registro y consulta de solicitudes de sus clientes \n - Programa desarrollado por Diego Chamendy y José Salgado");
+    }
+
+    @FXML private ContextMenu menuContextual;
+    @FXML
+    private void mostrarMenuContextual(ContextMenuEvent evento) {
+        menuContextual.show((Node) evento.getSource(), evento.getScreenX(), evento.getScreenY());
     }
 
 
