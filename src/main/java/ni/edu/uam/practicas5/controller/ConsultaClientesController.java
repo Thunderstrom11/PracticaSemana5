@@ -73,8 +73,8 @@ public class ConsultaClientesController {
         Cliente.seleccionado = cliente;
         try {
             SceneManager.abrirVentana(
-                    "/ni/edu/uam/practicas5/fxml/registro-clientes.fxml",
-                    "Client Manager - Editar Cliente");
+                    "/ni/edu/uam/practicas5/fxml/detalle-cliente.fxml",
+                    "Client Manager - Detalle del Cliente");
         } catch (IOException e) {
             AlertsUtils.showError("Error", "No fue posible abrir el registro de clientes");
         }
