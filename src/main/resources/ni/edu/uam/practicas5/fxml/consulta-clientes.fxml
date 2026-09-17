@@ -42,6 +42,13 @@
       <VBox alignment="TOP_CENTER" prefHeight="217.0" prefWidth="566.0" BorderPane.alignment="CENTER">
          <children>
             <TableView fx:id="tbvClientes" prefHeight="259.0" prefWidth="549.0">
+              <contextMenu>
+                <ContextMenu>
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#verDetalle" text="Ver detalle del cliente" />
+                  </items>
+                </ContextMenu>
+              </contextMenu>
               <columns>
                 <TableColumn fx:id="colNombre" prefWidth="232.79999095201492" text="Nombre" />
                 <TableColumn fx:id="colTipo" prefWidth="116.00001525878906" text="Tipo" />

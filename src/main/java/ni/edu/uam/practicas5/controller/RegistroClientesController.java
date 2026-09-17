@@ -61,8 +61,6 @@ public class RegistroClientesController {
             }
         });
 
-        // diferido: initialize() corre antes de que la escena este adjunta a la ventana,
-        // y prepararModoEdicion necesita txtNombre.getScene()
         Platform.runLater(this::prepararModoEdicion);
     }
 
@@ -117,7 +115,6 @@ public class RegistroClientesController {
         return true;
     }
 
-    // Dialog con resumen de datos, distinto del Alert (requisito de la guia)
     private boolean confirmarRegistro() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Confirmar registro");
@@ -150,7 +147,6 @@ public class RegistroClientesController {
         return dialog.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
     }
 
-    // El combo de ciudad es editable: prioriza lo tipeado sobre el valor seleccionado
     private String textoCiudad() {
         String texto = cmbCiudad.getEditor().getText();
         if (texto == null || texto.isBlank()) {
@@ -192,7 +188,6 @@ public class RegistroClientesController {
     private void reiniciarImg() {
         rutaFotografia = null;
         imgCliente.setImage(null);
-        lblRuta.setText("");
     }
 
     @FXML
@@ -225,8 +220,6 @@ public class RegistroClientesController {
         lblRuta.setText("");
     }
 
-    // modo edicion: la consulta deja el cliente en Cliente.seleccionado,
-    // se llenan los campos y se muestran los botones Editar/Borrar del toolbar
     private void prepararModoEdicion() {
         if (Cliente.seleccionado == null) return;
         modoEdicion = true;
