@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="383.0" prefWidth="1014.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.ConsultaClientesController">
+<BorderPane prefHeight="461.0" prefWidth="1014.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.ConsultaClientesController">
    <top>
       <VBox alignment="CENTER" prefHeight="124.0" prefWidth="566.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,13 +35,26 @@
                 </Button>
               </items>
             </ToolBar>
+            <HBox alignment="CENTER_LEFT" prefHeight="133.0" prefWidth="1014.0" spacing="20.0">
+               <children>
+                  <Label text="Buscador:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtBuscador" prefHeight="25.0" prefWidth="400.0" />
+               </children>
+               <padding>
+                  <Insets bottom="3.0" left="30.0" />
+               </padding>
+            </HBox>
          </children>
       </VBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="217.0" prefWidth="566.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="325.0" prefWidth="1014.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tbvClientes" prefHeight="259.0" prefWidth="549.0">
+            <TableView fx:id="tbvClientes" prefHeight="394.0" prefWidth="1004.0">
               <contextMenu>
                 <ContextMenu>
                   <items>

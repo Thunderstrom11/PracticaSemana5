@@ -14,6 +14,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -57,11 +58,18 @@ public class RegistroClientesController {
             @Override
             public void updateItem(LocalDate fecha, boolean empty) {
                 super.updateItem(fecha, empty);
-                setDisable(empty || fecha.isAfter(LocalDate.now()));
+                setDisable(empty || fecha.isAfter(limiteFechaNacimiento()));
             }
         });
+        dtpFechaNacimiento.getEditor().setTextFormatter(new TextFormatter<>(change ->
+                change.getControlNewText().matches("[\\d/]{0,10}") ? change : null));
+        dtpFechaNacimiento.setValue(limiteFechaNacimiento());
 
         Platform.runLater(this::prepararModoEdicion);
+    }
+
+    private LocalDate limiteFechaNacimiento() {
+        return LocalDate.now().minusYears(18);
     }
 
     @FXML
@@ -101,15 +109,19 @@ public class RegistroClientesController {
             return false;
         }
         if (textoCiudad().isBlank()) {
-            AlertsUtils.showAlert("Validacion", "Debe ingresar una ciudad.");
+            AlertsUtils.showAlert("Validacion", "Debe ingresar la ciudad del cliente.");
             return false;
         }
         if (dtpFechaNacimiento.getValue() == null) {
-            AlertsUtils.showAlert("Validacion", "Debe seleccionar la fecha de nacimiento.");
+            AlertsUtils.showAlert("Validacion", "Debe ingresar la fecha de nacimiento.");
+            return false;
+        }
+        if (dtpFechaNacimiento.getValue().isAfter(limiteFechaNacimiento())) {
+            AlertsUtils.showAlert("Validacion", "El cliente debe tener al menos 18 años.");
             return false;
         }
         if (tipoCliente.getSelectedToggle() == null) {
-            AlertsUtils.showAlert("Validacion", "Debe seleccionar un tipo de solicitud.");
+            AlertsUtils.showAlert("Validacion", "Debe seleccionar el tipo de solicitud.");
             return false;
         }
         return true;
@@ -209,7 +221,7 @@ public class RegistroClientesController {
         cmbTipoCliente.setValue(null);
         cmbCiudad.setValue(null);
         cmbCiudad.getEditor().clear();
-        dtpFechaNacimiento.setValue(null);
+        dtpFechaNacimiento.setValue(limiteFechaNacimiento());
         chxbRetiro.setSelected(false);
         chxbSoporte.setSelected(false);
         chkCotizacion.setSelected(false);
