@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="511.0" prefWidth="566.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.RegistroClientesController">
+<BorderPane prefHeight="511.0" prefWidth="535.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uam.practicas5.controller.RegistroClientesController">
    <top>
       <VBox alignment="CENTER" prefHeight="124.0" prefWidth="566.0" BorderPane.alignment="CENTER">
          <children>
@@ -133,9 +133,9 @@
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="117.0" prefWidth="294.0" spacing="15.0" GridPane.columnIndex="1">
+            <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="10.0" layoutY="10.0" prefHeight="117.0" prefWidth="294.0" spacing="15.0" GridPane.columnIndex="1">
                <children>
-                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="227.0" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="36.0" prefWidth="268.0" spacing="5.0">
                         <Label text="Tipo de Cliente:">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -149,7 +149,7 @@
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="15.0" prefHeight="30.0" prefWidth="227.0" spacing="5.0">
+                  <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="15.0" prefHeight="30.0" prefWidth="247.0" spacing="5.0">
                      <children>
                         <Label text="Ciudad:">
                            <font>
@@ -182,7 +182,7 @@
                   </Label>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="20.0" prefHeight="0.0" prefWidth="277.0" spacing="10.0">
                      <children>
-                        <RadioButton fx:id="chkCotizacion" mnemonicParsing="false" text="Cotizacion">
+                        <RadioButton fx:id="chkCotizacion" mnemonicParsing="false" selected="true" text="Cotizacion">
                            <toggleGroup>
                               <ToggleGroup fx:id="tipoCliente" />
                            </toggleGroup></RadioButton>

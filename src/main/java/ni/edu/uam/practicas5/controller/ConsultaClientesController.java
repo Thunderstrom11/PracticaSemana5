@@ -2,11 +2,13 @@ package ni.edu.uam.practicas5.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,8 +32,10 @@ public class ConsultaClientesController {
     @FXML private TableColumn<Cliente, String> colTipoSolicitud;
     @FXML private TableColumn<Cliente, String> colFoto;
     @FXML private TableColumn<Cliente, String> colCarpeta;
+    @FXML private TextField txtBuscador;
 
-    private final ObservableList<Cliente> clientes = FXCollections.observableList(Cliente.registrados);
+    private final FilteredList<Cliente> clientesFiltrados =
+            new FilteredList<>(FXCollections.observableList(Cliente.registrados));
 
     @FXML
     public void initialize() {
@@ -60,7 +64,8 @@ public class ConsultaClientesController {
             }
         });
         tbvClientes.setFixedCellSize(50);
-        tbvClientes.setItems(clientes);
+        tbvClientes.setItems(clientesFiltrados);
+        txtBuscador.textProperty().addListener((observable, anterior, nuevo) -> aplicarFiltro(nuevo));
         tbvClientes.setRowFactory(tabla -> {
             TableRow<Cliente> fila = new TableRow<>();
             fila.setOnMouseClicked(evento -> {
@@ -73,6 +78,18 @@ public class ConsultaClientesController {
             });
             return fila;
         });
+    }
+
+    private void aplicarFiltro(String texto) {
+        String consulta = texto == null ? "" : texto.trim().toLowerCase();
+        clientesFiltrados.setPredicate(cliente ->
+                consulta.isEmpty()
+                        || String.valueOf(cliente.getNombres()).toLowerCase().contains(consulta)
+                        || String.valueOf(cliente.getApellidos()).toLowerCase().contains(consulta)
+                        || String.valueOf(cliente.getCiudad()).toLowerCase().contains(consulta)
+                        || String.valueOf(cliente.getTipoCliente()).toLowerCase().contains(consulta)
+                        || String.valueOf(cliente.getTipoSolicitud()).toLowerCase().contains(consulta)
+                        || String.valueOf(cliente.getServicios()).toLowerCase().contains(consulta));
     }
 
     private void abrirEdicion(Cliente cliente) {
